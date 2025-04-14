@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Manager</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/themmSanPham.css" />
+    <style>
+      /* Modal styling */
+      .modal {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+
+      .modal-content {
+        position: relative;
+        width: 900px;
+        height: 705px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      /* Add this class to prevent body scrolling */
+      body.modal-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 25px;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .modal-header h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .close {
+        font-size: 28px;
+        font-weight: bold;
+        color: #aaa;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #333;
+        background-color: #f0f0f0;
+      }
+
+      .modal-body {
+        padding: 25px;
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      /* Form styling - Rest of your CSS remains the same */
+      .form-row {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        flex: 1;
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #333;
+        font-size: 14px;
+      }
+
+      .required {
+        color: #e74c3c;
+        margin-left: 2px;
+      }
+
+      .form-group input[type="text"],
+      .form-group input[type="number"],
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: all 0.2s;
+      }
+
+      .form-group input[type="text"]:focus,
+      .form-group input[type="number"]:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: #4a90e2;
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      /* Radio group */
+      .radio-group {
+        display: flex;
+        gap: 20px;
+        margin-top: 8px;
+      }
+
+      .radio-group label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        cursor: pointer;
+        font-weight: normal;
+      }
+
+      .radio-group input[type="radio"] {
+        margin-right: 8px;
+        cursor: pointer;
+      }
+
+      /* Form actions */
+      .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+        margin-top: 20px;
+      }
+
+      .btn-cancel {
+        padding: 10px 24px;
+        background-color: #f5f5f5;
+        color: #333;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .btn-cancel:hover {
+        background-color: #e8e8e8;
+      }
+
+      .btn-primary {
+        padding: 10px 24px;
+        background-color: #1a0dee;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .btn-primary:hover {
+        background-color: #3694f7;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <img src="../assets/icons//Fire.png" alt="" />
+          <h2>Ecommerce</h2>
+        </div>
+        <div class="sidebar-menu">
+          <li>
+            <a href="#"
+              ><img src="../assets/icons/Home (2).png" alt="" /> Thống kê</a
+            >
+          </li>
+          <li>
+            <a href="./category-manager.html"
+              ><img src="../assets/icons/Cash (2).png" alt="" /> Danh mục</a
+            >
+          </li>
+          <li class="active">
+            <a href="./dashboard.html"
+              ><img src="../assets/icons/Cash.png" alt="" /> Sản phẩm</a
+            >
+          </li>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="container">
+        <!-- phần 1 -->
+        <div class="inheader">
+          <div class="bell"><img src="../assets/icons/Bell.png" alt="" /></div>
+          <div class="avt" id="avatar-container">
+            <img src="../assets/images/download.jpg" alt="Avatar" id="avatar" />
+          </div>
+        </div>
+        <hr />
+        <div class="header">
+          <h2>Quản lý Sản phẩm</h2>
+          <button class="btn-primary" id="add-product-btn">
+            Thêm sản phẩm
+          </button>
+        </div>
+        <!-- filter, search -->
+        <div class="filter-search">
+          <!-- select -->
+          <select class="custom-select">
+            <option selected>Lọc theo danh mục</option>
+            <option value="1">Quần áo</option>
+            <option value="2">Kính mắt</option>
+            <option value="3">Giày dép</option>
+            <option value="4">Thời trang nam</option>
+            <option value="5">Thời trang nữ</option>
+            <option value="6">Hoa quả</option>
+            <option value="7">Rau</option>
+            <option value="8">Điện thoại</option>
+          </select>
+          <select class="custom-select">
+            <option selected>Lọc theo trạng thái</option>
+            <option value="1">Đang hoạt động</option>
+            <option value="2">Ngừng hoạt động</option>
+          </select>
+          <!-- search -->
+          <div style="position: relative">
+            <input
+              type="text"
+              class="custom-input"
+              id="search-input"
+              placeholder="Tìm kiếm sản phẩm theo tên"
+            />
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+        <!-- table -->
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Mã sản phẩm</th>
+              <th>Tên sản phẩm</th>
+              <th>Giá</th>
+              <th>Số lượng</th>
+              <th>Giảm giá</th>
+              <th>Trạng thái</th>
+              <th>Chức năng</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+            <tr>
+              <td>SP001</td>
+              <td>Áo sơ mi nam</td>
+              <td>350,000đ</td>
+              <td>50</td>
+              <td>10%</td>
+              <td>
+                <p class="status active">
+                  <span class="dot"></span><span>Đang hoạt động</span>
+                </p>
+              </td>
+              <td>
+                <span class="edit-action"
+                  ><img src="../assets/icons/Icon.png" alt="Sửa"
+                /></span>
+                <span class="delete-action"
+                  ><img src="../assets/icons/Icon (2).png" alt="Xóa"
+                /></span>
+              </td>
+            </tr>
+            <tr>
+              <td>SP002</td>
+              <td>Kính râm thời trang</td>
+              <td>450,000đ</td>
+              <td>30</td>
+              <td>5%</td>
+              <td>
+                <p class="status inactive">
+                  <span class="dot"></span><span>Ngừng hoạt động</span>
+                </p>
+              </td>
+              <td>
+                <span class="edit-action"
+                  ><img src="../assets/icons/Icon.png" alt="Sửa"
+                /></span>
+                <span class="delete-action"
+                  ><img src="../assets/icons/Icon (2).png" alt="Xóa"
+                /></span>
+              </td>
+            </tr>
+            <tr>
+              <td>SP003</td>
+              <td>Giày thể thao</td>
+              <td>850,000đ</td>
+              <td>25</td>
+              <td>15%</td>
+              <td>
+                <p class="status active">
+                  <span class="dot"></span><span>Đang hoạt động</span>
+                </p>
+              </td>
+              <td>
+                <span class="edit-action"
+                  ><img src="../assets/icons/Icon.png" alt="Sửa"
+                /></span>
+                <span class="delete-action"
+                  ><img src="../assets/icons/Icon (2).png" alt="Xóa"
+                /></span>
+              </td>
+            </tr>
+            <tr>
+              <td>SP004</td>
+              <td>Quần jean nam</td>
+              <td>550,000đ</td>
+              <td>40</td>
+              <td>0%</td>
+              <td>
+                <p class="status inactive">
+                  <span class="dot"></span><span>Ngừng hoạt động</span>
+                </p>
+              </td>
+              <td>
+                <span class="edit-action"
+                  ><img src="../assets/icons/Icon.png" alt="Sửa"
+                /></span>
+                <span class="delete-action"
+                  ><img src="../assets/icons/Icon (2).png" alt="Xóa"
+                /></span>
+              </td>
+            </tr>
+            <tr>
+              <td>SP005</td>
+              <td>Váy đầm nữ</td>
+              <td>650,000đ</td>
+              <td>35</td>
+              <td>20%</td>
+              <td>
+                <p class="status inactive">
+                  <span class="dot"></span><span>Ngừng hoạt động</span>
+                </p>
+              </td>
+              <td>
+                <span class="edit-action"
+                  ><img src="../assets/icons/Icon.png" alt="Sửa"
+                /></span>
+                <span class="delete-action"
+                  ><img src="../assets/icons/Icon (2).png" alt="Xóa"
+                /></span>
+              </td>
+            </tr>
+            <tr>
+              <td>SP006</td>
+              <td>Táo nhập khẩu</td>
+              <td>80,000đ</td>
+              <td>100</td>
+              <td>0%</td>
+              <td>
+                <p class="status inactive">
+                  <span class="dot"></span><span>Ngừng hoạt động</span>
+                </p>
+              </td>
+              <td>
+                <span class="edit-action"
+                  ><img src="../assets/icons/Icon.png" alt="Sửa"
+                /></span>
+                <span class="delete-action"
+                  ><img src="../assets/icons/Icon (2).png" alt="Xóa"
+                /></span>
+              </td>
+            </tr>
+            <tr>
+              <td>SP007</td>
+              <td>Rau xanh hữu cơ</td>
+              <td>25,000đ</td>
+              <td>150</td>
+              <td>0%</td>
+              <td>
+                <p class="status active">
+                  <span class="dot"></span><span>Đang hoạt động</span>
+                </p>
+              </td>
+              <td>
+                <span class="edit-action"
+                  ><img src="../assets/icons/Icon.png" alt="Sửa"
+                /></span>
+                <span class="delete-action"
+                  ><img src="../assets/icons/Icon (2).png" alt="Xóa"
+                /></span>
+              </td>
+            </tr>
+            <tr>
+              <td>SP008</td>
+              <td>Điện thoại Samsung</td>
+              <td>12,000,000đ</td>
+              <td>15</td>
+              <td>5%</td>
+              <td>
+                <p class="status inactive">
+                  <span class="dot"></span><span>Ngừng hoạt động</span>
+                </p>
+              </td>
+              <td>
+                <span class="edit-action"
+                  ><img src="../assets/icons/Icon.png" alt="Sửa"
+                /></span>
+                <span class="delete-action"
+                  ><img src="../assets/icons/Icon (2).png" alt="Xóa"
+                /></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- Pagination -->
+        <div class="pagination">
+          <button><i class="fas fa-chevron-left"></i></button>
+          <button>1</button>
+          <button>2</button>
+          <button class="active">3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+          <button>...</button>
+          <button>20</button>
+          <button><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/product-manager.js"></script>
+    <script></script>
+  </body>
+</html>

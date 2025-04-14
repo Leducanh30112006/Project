@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7Stars - Phone Shop</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: white;
+        color: #333;
+      }
+
+      .container {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: #fff;
+        position: sticky;
+        z-index: 100;
+      }
+
+      .header-top {
+        max-width: 100%;
+        height: 88px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 160px;
+        padding-left: 160px;
+        border-bottom: 1px solid white;
+      }
+
+      .logo {
+        height: 32px;
+        width: 96px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .search-bar {
+        flex-grow: 1;
+        max-width: 433px;
+        height: 56px;
+        position: relative;
+      }
+
+      .search-bar input {
+        width: 433px;
+        height: 56px;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        font-size: 14px;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      /* Navigation Bar */
+      .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #2a2a2a;
+        padding: 12px 0;
+        width: 100%;
+      }
+
+      .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        color: #a0a0a0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .nav-item:hover {
+        color: #ffffff;
+      }
+
+      .nav-icon {
+        margin-right: 8px;
+        font-size: 16px;
+        width: 18px;
+        text-align: center;
+      }
+
+      .nav-text {
+        font-size: 14px;
+      }
+
+      .nav-icons {
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-icons a {
+        color: #333;
+        text-decoration: none;
+      }
+
+      .nav-main {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 30px;
+      }
+
+      .nav-main ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+      }
+
+      .nav-main a {
+        text-decoration: none;
+        color: #333;
+        font-size: 14px;
+      }
+
+      /* Hero Section */
+      .hero {
+        background-color: rgba(33, 28, 36, 1);
+        color: white;
+        padding-right: 160px;
+        padding-left: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .hero-content {
+        max-width: 50%;
+      }
+
+      .hero-content h1 {
+        font-size: 48px;
+        margin-bottom: 15px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+        margin-bottom: 30px;
+        opacity: 0.8;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 16px 56px;
+        background-color: rgba(33, 28, 36, 1);
+        color: white;
+        border: #eee 1px solid;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .btn:hover {
+        background-color: #f0f0f0;
+      }
+
+      .hero-image {
+        max-width: 45%;
+      }
+
+      .hero-image img {
+        max-width: 100%;
+      }
+
+      /* Category Section */
+      .category-section {
+        padding: 80px 160px;
+        background-color: #fff;
+        margin: 20px 0;
+      }
+
+      .section-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .category-grid {
+        display: flex;
+        gap: 32px;
+        padding-bottom: 10px;
+      }
+
+      .category-item {
+        display: flex;
+        gap: 32px;
+        min-width: 160px;
+        height: 128px;
+        text-align: center;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .category-item img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+      }
+
+      .category-item p {
+        font-size: 14px;
+        justify-content: center;
+        text-align: center;
+      }
+
+      /* Product  */
+      .product-section {
+        padding: 30px;
+        background-color: #fff;
+        margin: 20px 0;
+        padding-right: 160px;
+        padding-left: 160px;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+
+      .product-card {
+        display: flex;
+        flex-direction: column;
+        height: 432px;
+        width: 268px;
+        border: none;
+        border-radius: 9px;
+        overflow: hidden;
+        background-color: #f6f6f6;
+        align-items: center;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .product-image {
+        width: 268px;
+        height: 248px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f6f6f6;
+        position: relative;
+        padding: 20px;
+      }
+
+      .product-image img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      .product-heart {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      .product-info {
+        display: flex;
+        height: 160px;
+        width: 236px;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        background-color: #f6f6f6;
+      }
+      s .product-name {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 5px;
+        height: 40px;
+        overflow: hidden;
+      }
+
+      .product-price {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+      }
+
+      .current-price {
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      .old-price {
+        text-decoration: line-through;
+        color: #f6f6f6;
+        font-size: 14px;
+      }
+
+      .product-card .btn {
+        width: 193px;
+        height: 48px;
+        text-align: center;
+        justify-content: center;
+        background-color: #000;
+        color: #f6f6f6;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        border-radius: 8px;
+      }
+
+      /* Featured Product */
+
+      /* Promotion Banner */
+      .promotion-banner {
+        position: relative;
+        width: 100%;
+        height: 448px;
+        background-color: rgba(46, 46, 46, 1);
+        color: white;
+        padding-top: 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .promotion-image {
+        position: absolute;
+        height: 448px;
+        width: 100%;
+      }
+
+      .promotion-image1 {
+        display: block;
+        position: absolute;
+        height: 365.97px;
+        width: 150.36px;
+        right: 0;
+        top: 0;
+      }
+      .promotion-image2 {
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 200px;
+        width: 404px;
+      }
+
+      .promotion-image4 {
+        position: absolute;
+        width: 300.56px;
+        height: 262.08px;
+
+        margin-top: 169px;
+      }
+      .promotion-image5 {
+        position: absolute;
+
+        margin-left: 183.88px;
+        top: 0px;
+        height: 120.97px;
+        width: 337.92px;
+      }
+
+      .promotion-image3 {
+        width: 237px;
+        height: 192px;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .promotion-content {
+        height: 200px;
+        width: 498px;
+
+        text-align: center;
+      }
+
+      .promotion-content h2 {
+        font-size: 72px;
+      }
+      .promotion-content p {
+        margin-bottom: 40px;
+        opacity: 0.5;
+      }
+
+      /* Footer */
+      footer {
+        position: relative;
+        background-color: #000;
+        color: #fff;
+        padding: 104px 160px 144px 160px;
+        height: 464px;
+      }
+
+      .footer-grid {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .footer-logo {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .footer-about {
+        margin-bottom: 20px;
+        font-size: 14px;
+        opacity: 0.8;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+      }
+
+      .footer-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        opacity: 0.8;
+        font-size: 14px;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        text-align: center;
+        font-size: 12px;
+        opacity: 0.6;
+      }
+
+      /* Navigation Arrows */
+      .nav-arrows {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 10px;
+      }
+
+      .arrow {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="header-top">
+          <a href="#" class="logo">
+            <img src="../assets/icons/Logo Vector.png" alt="" />
+          </a>
+          <div class="search-bar">
+            <input type="text" placeholder="Tìm kiếm sản phẩm..." />
+          </div>
+          <nav class="nav-main">
+            <ul>
+              <li><a href="#">Trang chủ</a></li>
+              <li><a href="#">Giới thiệu</a></li>
+              <li><a href="#">Liên hệ</a></li>
+            </ul>
+          </nav>
+          <div class="nav-icons">
+            <a href="#"><img src="../assets/icons/Favorites.png" alt="" /></a>
+            <a href="#"><img src="../assets/icons/Cart1.png" alt="" /></a>
+            <a href="#"><img src="../assets/icons/User.png" alt="" /></a>
+          </div>
+        </div>
+      </header>
+      <div class="navbar">
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-mobile-alt"></i></span>
+          <span class="nav-text">Điện thoại</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-laptop"></i></span>
+          <span class="nav-text">Laptop</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-home"></i></span>
+          <span class="nav-text">Đồng hồ thông minh</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-camera"></i></span>
+          <span class="nav-text">Cameras</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-headphones"></i></span>
+          <span class="nav-text">Tai nghe</span>
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon"><i class="fas fa-gamepad"></i></span>
+          <span class="nav-text">Gaming</span>
+        </a>
+      </div>
+
+      <section class="hero">
+        <div class="hero-content">
+          <p>Sản phẩm công nghệ</p>
+          <h1>iPhone 14 Pro</h1>
+          <p>Bước tiến mới về công nghệ smartphone</p>
+          <a href="#" class="btn">Mua ngay</a>
+        </div>
+        <div class="hero-image">
+          <img src="../assets/images/Iphone Image.png" alt="iPhone 14 Pro" />
+        </div>
+      </section>
+
+      <section class="category-section">
+        <h2 class="section-title">Danh mục sản phẩm</h2>
+        <div class="category-grid">
+          <div class="category-item">
+            <p>Điện thoại</p>
+          </div>
+          <div class="category-item">
+            <p>Máy tính</p>
+          </div>
+          <div class="category-item">
+            <p>Cameras</p>
+          </div>
+          <div class="category-item">
+            <p>Âm thanh</p>
+          </div>
+          <div class="category-item">
+            <p>Phụ kiện</p>
+          </div>
+          <div class="category-item">
+            <p>Gaming</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="product-section">
+        <h2 class="section-title">Sản phẩm nổi bật</h2>
+        <div class="product-grid">
+          <div class="product-card featured-product">
+            <div class="product-image">
+              <img src="/api/placeholder/150/150" alt="iPhone 14 Pro" />
+              <span class="product-heart"
+                ><img src="../assets/icons/Like.png" alt=""
+              /></span>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">iPhone 14 Pro 256GB</h3>
+              <div class="product-price">
+                <span class="current-price">$900</span>
+              </div>
+              <a href="#" class="btn">Mua ngay</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/api/placeholder/150/150" alt="Camera" />
+              <span class="product-heart"
+                ><img src="../assets/icons/Like.png" alt=""
+              /></span>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Sony Alpha a7 III Mirrorless Camera</h3>
+              <div class="product-price">
+                <span class="current-price">$2159</span>
+              </div>
+              <a href="#" class="btn">Mua ngay</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/api/placeholder/150/150" alt="Apple Watch" />
+              <span class="product-heart"
+                ><img src="../assets/icons/Like.png" alt=""
+              /></span>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Apple Watch Series 8 GPS</h3>
+              <div class="product-price">
+                <span class="current-price">$399</span>
+              </div>
+              <a href="#" class="btn">Mua ngay</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/api/placeholder/150/150" alt="Headphones" />
+              <span class="product-heart"
+                ><img src="../assets/icons/Like.png" alt=""
+              /></span>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">
+                Apple AirPods Max Wireless Headphones
+              </h3>
+              <div class="product-price">
+                <span class="current-price">$549</span>
+              </div>
+              <a href="#" class="btn">Mua ngay</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/api/placeholder/150/150" alt="Samsung Watch" />
+              <span class="product-heart"
+                ><img src="../assets/icons/Like.png" alt=""
+              /></span>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Samsung Galaxy Watch5 Pro</h3>
+              <div class="product-price">
+                <span class="current-price">$369</span>
+              </div>
+              <a href="#" class="btn">Mua ngay</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/api/placeholder/150/150" alt="Foldable Phone" />
+              <span class="product-heart"
+                ><img src="../assets/icons/Like.png" alt=""
+              /></span>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Galaxy Z Fold4 Smartphone</h3>
+              <div class="product-price">
+                <span class="current-price">$1799</span>
+              </div>
+              <a href="#" class="btn">Mua ngay</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/api/placeholder/150/150" alt="Earbuds" />
+              <span class="product-heart"
+                ><img src="../assets/icons/Like.png" alt=""
+              /></span>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Galaxy Buds Pro 2</h3>
+              <div class="product-price">
+                <span class="current-price">$189</span>
+              </div>
+              <a href="#" class="btn">Mua ngay</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/api/placeholder/150/150" alt="iPad" />
+              <span class="product-heart"
+                ><img src="../assets/icons/Like.png" alt=""
+              /></span>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Apple iPad Air M1 Chip</h3>
+              <div class="product-price">
+                <span class="current-price">$599</span>
+              </div>
+              <a href="#" class="btn">Mua ngay</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="product-section">
+        <h2 class="section-title">Sản phẩm gợi ý</h2>
+        <div class="product-grid">
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/api/placeholder/150/150" alt="iPhone Gold" />
+              <span class="product-heart"
+                ><img src="../assets/icons/Like.png" alt=""
+              /></span>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">iPhone 14 Pro Max Gold</h3>
+              <div class="product-price">
+                <span class="current-price">$1099</span>
+              </div>
+              <a href="#" class="btn">Mua ngay</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/api/placeholder/150/150" alt="Headphones White" />
+              <span class="product-heart"
+                ><img src="../assets/icons/Like.png" alt=""
+              /></span>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Apple AirPods Max (White)</h3>
+              <div class="product-price">
+                <span class="current-price">$539</span>
+              </div>
+              <a href="#" class="btn">Mua ngay</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/api/placeholder/150/150" alt="Apple Watch Ultra" />
+              <span class="product-heart"
+                ><img src="../assets/icons/Like.png" alt=""
+              /></span>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Apple Watch Ultra</h3>
+              <div class="product-price">
+                <span class="current-price">$799</span>
+              </div>
+              <a href="#" class="btn">Mua ngay</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/api/placeholder/150/150" alt="iPhone Black" />
+              <span class="product-heart"
+                ><img src="../assets/icons/Like.png" alt=""
+              /></span>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">iPhone 14 Pro Max Black</h3>
+              <div class="product-price">
+                <span class="current-price">$1099</span>
+              </div>
+              <a href="#" class="btn">Mua ngay</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="promotion-banner">
+        <div class="promotion-content">
+          <h2>Ưu đãi mùa hè</h2>
+          <p>Nhanh tay săn đón các sản phẩm chất lượng</p>
+          <a href="#" class="btn">Xem ngay</a>
+        </div>
+        <div class="promotion-image">
+          <img
+            class="promotion-image1"
+            src="../assets/images/image 8.png"
+            alt="Promotion"
+          />
+          <img
+            class="promotion-image2"
+            src="../assets/images/image 7.png"
+            alt="Promotion"
+          />
+          <img
+            class="promotion-image3"
+            src="../assets/images/image 18.png"
+            alt="Promotion"
+          />
+          <img
+            class="promotion-image4"
+            src="../assets/images/jbl_jr_310bt_blue 1.png"
+            alt="Promotion"
+          />
+          <img
+            class="promotion-image5"
+            src="../assets/images/image 6.png"
+            alt="Promotion"
+          />
+        </div>
+      </section>
+
+      <footer>
+        <div class="footer-grid">
+          <div>
+            <div class="footer-logo">
+              <img src="../assets/icons/Logo.png" alt="" />
+            </div>
+            <p class="footer-about">
+              Chúng tôi cung cấp các sản phẩm công nghệ chính hãng với giá tốt
+              nhất thị trường.
+            </p>
+          </div>
+          <div>
+            <h3 class="footer-title">Dịch vụ</h3>
+            <ul class="footer-links">
+              <li><a href="#">Về chúng tôi</a></li>
+              <li><a href="#">Tuyển dụng</a></li>
+              <li><a href="#">Tin tức</a></li>
+              <li><a href="#">Liên hệ</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-title">Hỗ trợ cho người mua</h3>
+            <ul class="footer-links">
+              <li><a href="#">Trung tâm hỗ trợ</a></li>
+              <li><a href="#">Chính sách bảo hành</a></li>
+              <li><a href="#">Chính sách đổi trả</a></li>
+              <li><a href="#">Chính sách vận chuyển</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Font Awesome for icons -->
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Đăng nhập</h2>
+      <p>Đăng nhập tài khoản để sử dụng hệ thống quản lý.</p>
+
+      <form id="login-form">
+        <label class="type-label" for="email">Email</label>
+        <input type="email" id="email" name="email" />
+        <div id="email-error" class="error-message"></div>
+
+        <label class="type-label" for="password">Mật khẩu</label>
+        <input type="password" id="password" name="password" />
+        <div id="password-error" class="error-message"></div>
+
+        <div class="options">
+          <label>
+            <input type="checkbox" name="remember" /> Nhớ tài khoản
+          </label>
+          <a href="#">Quên mật khẩu?</a>
+        </div>
+
+        <button type="submit">ĐĂNG NHẬP</button>
+      </form>
+
+      <div class="signup-link">
+        Bạn chưa có tài khoản? <a href="./register.html">Đăng ký</a>
+      </div>
+    </div>
+    <script src="../js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

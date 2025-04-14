@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: white;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 480px;
+}
+header {
+  text-align: center;
+}
+main {
+  width: 480px;
+  height: 390px;
+  background-color: white;
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 44px;
+  margin-bottom: 20px;
+  color: #101828;
+}
+
+p {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+
+  color: #667085;
+  margin-bottom: 24px;
+}
+
+.form-group-name {
+  display: flex;
+  gap: 32px;
+  text-align: left;
+}
+.form-group-name input[type="text"] {
+  width: 224px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.name-input {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  font-weight: 600;
+  line-height: 20px;
+}
+label {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  display: block;
+  text-align: left;
+  color: #344054;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 480px;
+  height: 60px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  margin-bottom: 24px;
+  margin-top: 6px;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+  color: #999;
+}
+
+.form-group-checkbox {
+  display: flex;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-bottom: 24px;
+}
+
+input[type="checkbox"] {
+  margin-right: 12px;
+}
+
+.btn {
+  width: 480px;
+  padding: 12px;
+  background-color: #1a0dee;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #3694f7;
+}
+
+.login-link {
+  margin-top: 24px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #666;
+}
+
+.login-link a {
+  color: #007aff;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}

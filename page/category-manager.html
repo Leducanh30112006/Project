@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Category Manager</title>
+    <link rel="stylesheet" href="../css/category-manager.css" />
+    <style></style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <img src="../assets/icons/Fire.png" alt="" />
+          <h2>Ecommerce</h2>
+        </div>
+        <div class="sidebar-menu">
+          <li>
+            <a href="#"
+              ><img src="../assets/icons/Home (2).png" alt="" /> Thống kê</a
+            >
+          </li>
+          <li class="active">
+            <a href="#"
+              ><img src="../assets/icons/Cash (3).png" alt="" /> Danh mục</a
+            >
+          </li>
+          <li>
+            <a href="./dashboard.html"
+              ><img src="../assets/icons/Cash (1).png" alt="" /> Sản phẩm</a
+            >
+          </li>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="container">
+        <!-- phần 1 -->
+        <div class="inheader">
+          <div class="bell"><img src="../assets/icons/Bell.png" alt="" /></div>
+          <div class="avt" id="avatar-container">
+            <img src="../assets/images/download.jpg" alt="" />
+            <!-- User dropdown menu -->
+            <div class="user-dropdown" id="user-dropdown">
+              <div class="user-dropdown-header">
+                <h3>Thông tin</h3>
+              </div>
+              <ul class="user-dropdown-menu">
+                <li>
+                  <a href="javascript:void(0);" id="logout-btn">
+                    <img src="../assets/images/download.jpg" alt="" /> Đăng xuất
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="header">
+          <h2>Danh Mục</h2>
+          <button class="btn-primary" id="add-category-btn">
+            Thêm danh mục
+          </button>
+        </div>
+        <!-- filter, search -->
+        <div class="filter-search">
+          <!-- select -->
+          <select class="custom-select">
+            <option value="all" selected>Tất cả</option>
+            <option value="active">Đang hoạt động</option>
+            <option value="inactive">Ngừng hoạt động</option>
+          </select>
+          <!-- search -->
+          <div style="position: relative">
+            <input
+              type="text"
+              class="custom-input"
+              id="search-input"
+              placeholder="Tìm kiếm danh mục theo tên"
+            />
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+        <!-- table -->
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>
+                Mã danh mục
+                <img
+                  class="arrow"
+                  src="../assets/icons/arrow-down.png"
+                  alt=""
+                />
+              </th>
+              <th>
+                Tên danh mục
+                <img
+                  class="arrow"
+                  src="../assets/icons/arrow-down.png"
+                  alt=""
+                />
+              </th>
+              <th>Trạng thái</th>
+              <th>Chức năng</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+            <!-- Các hàng trong bảng sẽ được thêm bởi JavaScript -->
+          </tbody>
+        </table>
+        <!-- Pagination -->
+        <div class="pagination">
+          <!-- Phân trang sẽ được thêm bởi JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal-overlay">
+      <div id="category-modal">
+        <div class="modal-header">
+          <h3 class="modal-title">Thêm mới danh mục</h3>
+          <button class="close-button">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="required">Mã danh mục</label>
+            <input
+              type="text"
+              id="category-id"
+              placeholder="Nhập mã danh mục"
+            />
+            <div class="error-message" id="id-error">
+              Mã danh mục không được để trống
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="required">Tên danh mục</label>
+            <input
+              type="text"
+              id="category-name"
+              placeholder="Nhập tên danh mục"
+            />
+            <div class="error-message" id="name-error">
+              Tên danh mục không được để trống
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Trạng thái</label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input
+                  type="radio"
+                  id="active"
+                  name="status"
+                  value="active"
+                  checked
+                />
+                <label for="active">Đang hoạt động</label>
+              </div>
+              <div class="radio-option">
+                <input
+                  type="radio"
+                  id="inactive"
+                  name="status"
+                  value="inactive"
+                />
+                <label for="inactive">Ngừng hoạt động</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="cancel-btn">Hủy</button>
+          <button class="btn btn-primary" id="save-btn">Lưu</button>
+        </div>
+      </div>
+    </div>
+    <!-- Replace the current avatar HTML with this -->
+
+    <script src="../js/category-manager.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script></script>
+  </body>
+</html>
